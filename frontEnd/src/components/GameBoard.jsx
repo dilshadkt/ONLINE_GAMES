@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import './GameBoard.css';
 
-const socket = io('http://localhost:3001');
+const socket = io('https://online-games-sk4k.vercel.app');
 
 function GameBoard() {
     const [gameState, setGameState] = useState({
