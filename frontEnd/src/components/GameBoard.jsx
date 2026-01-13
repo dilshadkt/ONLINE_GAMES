@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import './GameBoard.css';
 
-const socket = io('https://online-games-sk4k.vercel.app');
+// Use environment variable for backend URL, fallback to localhost for development
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const socket = io(BACKEND_URL);
 
 function GameBoard() {
     const [gameState, setGameState] = useState({

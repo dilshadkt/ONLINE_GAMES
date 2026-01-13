@@ -183,21 +183,45 @@ If you get a port conflict error:
 
 ## 🚀 Deployment
 
-### Backend
-Deploy to services like:
-- Heroku
-- Railway
-- Render
-- DigitalOcean
+**⚠️ Important**: Socket.io requires WebSocket support. **Do NOT deploy the backend to Vercel** - it won't work!
 
-### Frontend
-Deploy to services like:
-- Vercel
-- Netlify
-- GitHub Pages
-- Cloudflare Pages
+### Quick Deployment Guide
 
-**Important:** Update the socket connection URL in production!
+1. **Backend** → Deploy to Railway, Render, or Heroku (platforms with WebSocket support)
+2. **Frontend** → Deploy to Vercel or Netlify
+
+### Environment Variables
+
+**Backend** (`.env`):
+```env
+PORT=3000
+ALLOWED_ORIGINS=https://your-frontend.vercel.app
+```
+
+**Frontend** (`.env`):
+```env
+VITE_BACKEND_URL=https://your-backend.railway.app
+```
+
+### Detailed Guides
+
+- 📖 **[Complete Deployment Guide](DEPLOYMENT.md)** - Step-by-step instructions for deploying to production
+- 🔧 **[Vercel Fix Guide](VERCEL_FIX.md)** - Quick fix for "Session ID unknown" error
+
+### Recommended Platforms
+
+**Backend** (Must support WebSockets):
+- ✅ Railway (Recommended - Free tier)
+- ✅ Render (Free tier available)
+- ✅ Heroku (Paid)
+- ✅ DigitalOcean App Platform
+- ❌ Vercel (Does NOT support WebSockets)
+
+**Frontend**:
+- ✅ Vercel (Recommended)
+- ✅ Netlify
+- ✅ Cloudflare Pages
+- ✅ GitHub Pages
 
 ## 📄 License
 
