@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://online-games-neon.vercel.app",
     methods: ["GET", "POST"]
   }
 });
@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
 
     // Make the move
     room.board[index] = playerSymbol;
-    
+
     // Check for winner
     const result = checkWinner(room.board);
     if (result === 'draw') {
@@ -125,7 +125,7 @@ io.on('connection', (socket) => {
   // Handle disconnect
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
-    
+
     // Remove player from any rooms
     for (let [roomId, room] of gameRooms.entries()) {
       if (room.players.X?.id === socket.id || room.players.O?.id === socket.id) {
